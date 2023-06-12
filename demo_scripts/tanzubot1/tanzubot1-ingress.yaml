@@ -4,7 +4,12 @@ metadata:
   name: tanzubot1-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  tls:
+    - hosts:
+        - tanzubot1.genaissance.ai
+      secretName: tanzubot1-tls-secret
   rules:
     - host: tanzubot1.genaissance.ai
       http:
